@@ -1,0 +1,19 @@
+{
+    "event": [{
+        "id": 0,
+        "target": null,
+        "url": "",
+        "ref": "",
+        "method": "POST",
+        "content": {
+        },
+        "messageCallback": null,
+        "onSubmit": "(element)=>{console.log('Submit')}",
+        "onAccept": "(element)=>{console.log('Accept')}",
+        "onReject": "(element)=>{console.log('Reject')}",
+        "onComplete": "(element)=>{console.log('Complete')}"
+    }],
+    "csrf": "",
+    "csrf_header": "X-CSRFToken",
+    "Content-Type": "application/json"
+}

@@ -1,0 +1,33 @@
+{
+    "name": "ajaxify",
+    "version": "1.0.0",
+    "args":{
+        "id": "axy-id",
+        "csrf": "axy-csrf",
+        "csrf_header": "axy-csrf-name",
+        "ref": "axy-ref",
+        "to": "axy-to",
+        "method": "axy-method",
+        "disabled": "axy-disabled",
+        "msg_container":"axy-msg-cont",
+        "message": "axy-msg",
+        "level": "axy-lvl",
+        "container": "axy-ctr",
+        "type":"axy-type",
+        "alert_icon":"axy-icon",
+        "alert_div": "axy-alert",
+        "hook_the": "axy-hook-the",
+        "hook": "axy-hook",
+        "hook_quant": "axy-hook-quant",
+        "comment": "axy-comment",
+        "content": "axy-use-content",
+        "onSubmit": "axy-on-submit",
+        "onAccept": "axy-on-accept",
+        "onReject": "axy-on-reject",
+        "onComplete": "axy-on-complete",
+        "lang":{
+            "es":{},
+            "en":{}
+        }
+    }
+}
