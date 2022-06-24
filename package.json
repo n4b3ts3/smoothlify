@@ -1,7 +1,10 @@
 {
   "name": "smoothlify",
-  "version": "0.1.1",
+  "author": "Esteban Chacon Martin <n4b3ts3@gmail.com> https://godjango.dev",
+  "version": "0.1.2",
+  "license": "GPL-3.0-only",
   "private": false,
+  "js": "smoothlify",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",

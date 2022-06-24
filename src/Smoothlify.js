@@ -3,7 +3,7 @@ import data from "./data/data.json";
 import config from "./config.json";
 import Network from './core/network';
 
-export default class Ajaxify {
+export default class Smoothlify {
   constructor(){
     this.network = new Network();
     this.targets = []
@@ -13,8 +13,6 @@ export default class Ajaxify {
     document.body.onscroll =(event)=>{
       let target = this.targets.at(this.targets.length - 1);
       let scrollPosition = window.scrollY + window.screen.availHeight;
-      //console.log(scrollPosition + " " + offset + " " + (target.offsetTop - parseInt(target.clientHeight)));
-      //console.log(target);
       if (scrollPosition + offset >= target.offsetTop - target.clientHeight) // Normalize the value
       {
         console.log("Element reached");
@@ -23,8 +21,9 @@ export default class Ajaxify {
     }
   }
   static find(id){
-    return Ajaxify.findEvent(id)?.target;
+    return Smoothlify.findEvent(id)?.target;
   }
+  // It has a problem with number 4 element :-) do tests with jest for a completly fix
   static findEvent(id){
     let pointer = 0;
     while(true){
@@ -46,9 +45,12 @@ export default class Ajaxify {
 
 
   process(id){
-    let target = Ajaxify.find(parseInt(id));
+    let target = Smoothlify.find(parseInt(id));
     target.title = target.getAttribute(config.args.to) || "undefined";
-    target?.addEventListener("click", async (e) => {
+    let targetType = target.nodeName.toLowerCase();
+
+    let event = "click";
+    let handler = async (e) => {
       e.preventDefault();
       if (e.target.getAttribute(config.args.disabled) === "true") return;
       e.target.setAttribute(config.args.disabled, true);
@@ -60,7 +62,17 @@ export default class Ajaxify {
           e.target.style.cursor = t;
           e.target.setAttribute(config.args.disabled, false);
       });
-    })
+    };
+    
+    if(targetType === "input"){
+      event = "input";
+      target?.addEventListener(event, handler);
+      event = "change";
+      target?.addEventListener(event, handler);
+    } else{
+        event = "click";
+        target?.addEventListener(event, handler);
+    }
     this.targets.push(target);
   }
 }

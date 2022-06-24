@@ -28,6 +28,9 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="smoothlify" sly-msg="Se ha anadido producto N al carrito"/>
+    <button class="smoothlify" sly-msg="Se ha anadido producto N al carrito" sly-to="http://localhost:8000/cart/add/0/" sly-csrf="" >asd</button>
+    <a class="smoothlify" sly-to="http://localhost:8000/cart/add/0/" sly-csrf="">asd</a>
     <div id="elementId"></div>
     <div>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus amet nulla 
@@ -65,39 +68,29 @@
        dicta est error ut.
     </div>
     <div 
-      axy-comment="Critical attributes (without them this doesnt work)"
-      class="ajaxify" axy-to="http://localhost:8000/cart/add/0/"
-      axy-csrf="{{csrf_token}}"
-      axy-comment="End of Critical attributes" 
-      axy-comment="Design attributes"
-      axy-msg-cont="elementId"
-      axy-comment="End of design attributes"
-      axy-comment="Hook related commands starts here"
-      axy-hook axy-hook-the="elementClass"
-      axy-hook-quant="2"
-      axy-comment="Hook related commands ends here"
-      axy-comment="Send the next content as payload to the backend"
-      axy-use-content="targetClass"
-      axy-comment="End content section"
+      sly-comment="Critical attributes (without them this doesnt work)"
+      class="smoothlify" sly-to="http://localhost:8000/cart/add/0/"
+      sly-csrf="{{csrf_token}}"
+      sly-comment="End of Critical attributes" 
+      sly-comment="Design attributes"
+      sly-msg-cont="elementId"
+      sly-comment="End of design attributes"
+      sly-comment="Hook related commands starts here"
+      sly-hook sly-hook-the="elementClass"
+      sly-hook-quant="2"
+      sly-comment="Hook related commands ends here"
+      sly-comment="Send the next content as payload to the backend"
+      sly-use-content="targetClass"
+      sly-comment="End content section"
     >
       <div class="elementClass targetClass" id="test1" style="height: 100px;">1</div>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident,
       quia magnam? Magnam veritatis provident, dolor illo earum aliquam quidem repudiandae a inventore 
       vero deserunt omnis praesentium ipsam, laudantium obcaecati alias.</div>
-    <div class="ajaxify" axy-use-content="test-amount">
-      <input class="test-amount" name="testname" value="10"></input>
+    <div class="smoothlify" sly-use-content="test-amount">
+      <input class="smoothlify test-amount" name="testname" value="10"></input>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus amet nulla 
       quaerat praesentium ratione sapiente officia vitae iure min>us quis enim suscipit, a explicabo 
       cupiditate sit, distinctio in corrupti vel!</div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
