@@ -3,7 +3,10 @@ import "./Message.scss";
 import data from '../data/data.json';
 //import config from '../config.json';
 //import Smoothlify from '../Smoothlify.js';
-import "../static/css/fontawesome.css";
+import "font-awesome/css/font-awesome.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Alert from 'react-bootstrap/Alert';
+import CloseButton from 'react-bootstrap/CloseButton';
 
 export default class Message extends React.Component{
   constructor(props){
@@ -16,12 +19,11 @@ export default class Message extends React.Component{
     }
     //let event = Smoothlify.findEvent(props[config.args.id]);
     data.messageCallback = (level, message) => {
-      console.log("Calling the fucking callback!! with message: " + message + " and level " + level);
       this.setState({
         "level":  level || 0,
         "message": message || "no text defined",
         "visible": true
-      })
+      });
       if (this.timeout !== undefined)
         clearTimeout(this.timeout);
       this.timeout = setTimeout(()=>{
@@ -38,36 +40,30 @@ export default class Message extends React.Component{
     level 3: Critical Error
   */
   render(){
-    let bg = "#4caf50"; 
     let icon = "fa fa-info-circle";
+    let variant = "success";
     switch(this.state.level){
       case 2:
-        bg = "#ffea00";
         icon = "fa fa-info";
+        variant = "warning";
         break;
       case 3:
-        bg = "#e53935";
         icon = "fa fa-exclamation-triangle";
+        variant = "danger";
         break;
       default:
         break;
     }
-    let messageStyle = {
-      "backgroundColor": bg,
-      "display": this.state.visible?"flex": "none"
-    }
     return (
-      <div id="sly-message" style={
-        messageStyle
-      }>
+      <Alert id="sly-message" show={this.state.visible} variant={variant} >
         <span className={'' + icon} style={{
-          "fontSize": "40px"
-        }}></span> 
-        <span>{this.state.message}</span>
-        <span className="sly-msg-close" onClick={
-          ()=>this.setState({"visible": false})
-        }>X</span>
-      </div>
+          "fontSize": "40px",
+        }}>
+        </span> 
+        { this.state.message }
+        <CloseButton onClick={() => this.setState({"visible": false})} variant="outline-success">
+        </CloseButton>
+      </Alert>
     )
   }
 }

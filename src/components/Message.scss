@@ -1,27 +1,16 @@
 #sly-message{
-    position: fixed;
-    display: flex;
-    padding: 2%;
-    justify-content: flex-start;
+    position: fixed; 
+    display: flex !important;
+    top: 1%;
+    left: 2.5%;
+    width: 95%;
+    justify-content: space-between;
     align-items: center;
-    top: 5px;
-    right: 5px;
-    min-width: 230px;
-    gap: 5%;
-    box-shadow: 0 0 3px 3px;
-    border-radius: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    color: #222;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: all 0.55s ease-in-out;
-    font-style: italic;
 }
-.sly-msg-close{
-    position: absolute;
-    font-weight: 700;
-    font-style: normal;
-    top: 5px;
-    right: 10px;
-    cursor: pointer;
+@media screen and (max-width: 400px){
+    #sly-message{
+        top: 0.25%;
+        left: 0.25%;
+        width: 99.5%;
+    }
 }

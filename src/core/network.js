@@ -44,13 +44,17 @@ export default class Network{
           if(response.ok){
             console.log("Who in the hell are you?!!" + data.messageCallback);
             if (data.messageCallback)
-                data.messageCallback(1, event.target.getAttribute(config.args.message) || "Los datos se enviaron correctamente");
+                data.messageCallback(1, event?.target?.getAttribute(config.args.message) || "Los datos se enviaron correctamente");
+            // Get the response in json format others format are not allowed cause 
             response.json().then((data)=>{
+              // Getting the on accept method
               // eslint-disable-next-line
               eval(event.onAccept)(event.target, data);
+              // Getting slaves 
               for (let slave of event.slaves){
                 slave.innerText = this.find(data, event.target.getAttribute(config.args.slave_cause));
               }
+              // Getting targets 
               let targets = event.target.getAttribute(config.args.slave_targets);
               if (targets)
                 targets = targets.split(" ");
