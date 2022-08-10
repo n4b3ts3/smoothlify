@@ -11,18 +11,17 @@ import CloseButton from 'react-bootstrap/CloseButton';
 export default class Message extends React.Component{
   constructor(props){
     super(props);
-    //console.log(event);
     this.state = {
-      "level": 0,
-      "message": "",
-      "visible": false
+      level: 0,
+      message: "",
+      visible: false
     }
     //let event = Smoothlify.findEvent(props[config.args.id]);
     data.messageCallback = (level, message) => {
       this.setState({
-        "level":  level || 0,
-        "message": message || "no text defined",
-        "visible": true
+        level:  level || 0,
+        message: message || "no text defined",
+        visible: true
       });
       if (this.timeout !== undefined)
         clearTimeout(this.timeout);
@@ -55,13 +54,15 @@ export default class Message extends React.Component{
         break;
     }
     return (
-      <Alert id="sly-message" show={this.state.visible} variant={variant} >
-        <span className={'' + icon} style={{
-          "fontSize": "40px",
+      <Alert id="sly-message" dismissible={true} 
+        onClose={() => this.setState({"visible": false})}
+        show={this.state.visible} variant={variant} >
+        <span className={'sly-icon ' + icon} style={{
+          fontSize: "40px",
         }}>
         </span> 
         { this.state.message }
-        <CloseButton onClick={() => this.setState({"visible": false})} variant="outline-success">
+        <CloseButton onClick={() => this.setState({visible: false})}>
         </CloseButton>
       </Alert>
     )

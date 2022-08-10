@@ -1,0 +1,10 @@
+{
+    "link": "https://godjango.dev/",
+    "image": "favicon.png",
+    "name": "Smoothlify 2",
+    "description": "This allows you to do magic",
+    "amount": 10000,
+    "unit": "With unit testing",
+    "price": 120,
+    "coin": "USD"
+}

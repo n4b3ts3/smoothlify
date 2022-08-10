@@ -1,10 +1,12 @@
 #sly-message{
     position: fixed; 
     display: flex !important;
+    z-index: 99999; 
     top: 1%;
     left: 2.5%;
     width: 95%;
-    justify-content: space-between;
+    gap: 5%;
+    justify-content: flex-start;
     align-items: center;
 }
 @media screen and (max-width: 400px){

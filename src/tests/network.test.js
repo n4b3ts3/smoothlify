@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import Network from '../core/network';
-import Smoothlify from '../Smoothlify';
+import {network} from '../core/network';
+// import {Smoothlify} from '../Smoothlify';
 /*
 test('renders learn react link', () => {
   render(<App />);
@@ -8,27 +8,29 @@ test('renders learn react link', () => {
   expect(linkElement).toBeInTheDocument();
 });
 */
+
 test("isDict it works", ()=>{
-  let type = new Network().isDict({
+  let type = network.isDict({
     "key1": "value1",
   });
   expect(type).toBeTruthy();
 });
+
 test("isDict works with other types?", ()=>{
-  let type = new Network().isDict("Hola");
+  let type = network.isDict("Hola");
   expect(type).toBeFalsy();
-  type = new Network().isDict(["Hola", "asd"]);
+  type = network.isDict(["Hola", "asd"]);
   expect(type).toBeFalsy();
-  type = new Network().isDict(1);
+  type = network.isDict(1);
   expect(type).toBeFalsy();
-  type = new Network().isDict(undefined);
+  type = network.isDict(undefined);
   expect(type).toBeFalsy();
-  type = new Network().isDict(null);
+  type = network.isDict(null);
   expect(type).toBeFalsy();
 })
 
 test("find it works", ()=>{
-  let findResponse = new Network().find({
+  let findResponse = network.find({
     "data": {
       "other": "something",
       "another": {

@@ -28,7 +28,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div class="smoothlify" sly-msg="Se ha anadido producto N al carrito"/>
+    <div class="smoothlify" sly-msg="Se ha anadido producto N al carrito"></div>
     <button class="smoothlify" sly-msg="Se ha anadido producto N al carrito" sly-to="http://localhost:8000/cart/add/0/" sly-csrf="" >asd</button>
     <a class="smoothlify" sly-to="http://localhost:8000/cart/add/0/" sly-csrf="">asd</a>
     <div id="elementId"></div>
@@ -69,24 +69,70 @@
     </div>
     <div 
       sly-comment="Critical attributes (without them this doesnt work)"
-      class="smoothlify" sly-to="http://localhost:8000/cart/add/0/"
+      class="smoothlify" sly-to="json_test/"
+      sly-hook-position-like-get
       sly-csrf="{{csrf_token}}"
       sly-comment="End of Critical attributes" 
       sly-comment="Design attributes"
       sly-msg-cont="elementId"
       sly-comment="End of design attributes"
       sly-comment="Hook related commands starts here"
-      sly-hook sly-hook-the="elementClass"
-      sly-hook-quant="2"
+      sly-hook sly-hook-the="cf-product"
+      sly-hook-start-at="1"
+      sly-method="get"
+      sly-hook-recompute
+      sly-hook-prefetch="4"
+      sly-hook-skeleton="<div class='col-12 col-md-4 mb-4 este cf-product' 
+      style='display: inline-block'>
+      <div class='card h-100'>
+          <button class='smoothlify' sly-msg='%msg%' sly-to='%link%' sly-csrf='' >Smoothly</button>
+          <button class='smoothlify' sly-msg='%msg%' sly-to='%link%' sly-csrf='' >Smoothly 2</button>
+          <a href='%link%'>
+              <img style='aspect-ratio: 16/15;' src='/media/%image%' 
+                  class='card-img-top' alt='%name%'>
+          </a>
+          <div class='card-body' style='text-align: justify; text-justify: distribute-all-lines;'>
+              <a href='%link%'
+                  class='h2 text-decoration-none text-dark'>%name%</a>
+              <p class='card-text'>
+                  %description%
+              </p>
+              <div style='display: flex; flex-direction: row; justify-content: space-between; align-items: center;'>
+                  <span>%amount% %unit%</span>
+                  <span>%price% %coin%</span>
+              </div>
+          </div>
+      </div>
+  </div>"
+      sly-hook-quant="3"
       sly-comment="Hook related commands ends here"
       sly-comment="Send the next content as payload to the backend"
       sly-use-content="targetClass"
       sly-comment="End content section"
     >
-      <div class="elementClass targetClass" id="test1" style="height: 100px;">1</div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident,
-      quia magnam? Magnam veritatis provident, dolor illo earum aliquam quidem repudiandae a inventore 
-      vero deserunt omnis praesentium ipsam, laudantium obcaecati alias.</div>
+      <!--
+      <div class='col-12 col-md-4 mb-4 este cf-product' 
+        style='display: inline-block'>
+        <div class='card h-100'>
+            <a href='none'>
+                <img style='aspect-ratio: 16/15;' src='/media/none' 
+                    class='card-img-top' alt='alt'>
+            </a>
+            <div class='card-body' style='text-align: justify; text-justify: distribute-all-lines;'>
+                <a href='link'
+                    class='h2 text-decoration-none text-dark'>%name%</a>
+                <p class='card-text'>
+                    %description%
+                </p>
+                <div style='display: flex; flex-direction: row; justify-content: space-between; align-items: center;'>
+                    <span>%amount% %unit%</span>
+                    <span>%price% %coin%</span>
+                </div>
+            </div>
+        </div>
+      </div>
+      -->
+    </div>
     <div class="smoothlify" sly-use-content="test-amount">
       <input class="smoothlify test-amount" name="testname" value="10"></input>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus amet nulla 

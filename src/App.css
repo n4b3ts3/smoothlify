@@ -2,3 +2,16 @@
   cursor: pointer;
   color:red;
 }
+.sly-item{
+  animation-name: show-item;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes show-item {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
